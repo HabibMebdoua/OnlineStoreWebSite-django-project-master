@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="text-center">This is your orders</h1>
+            <hr>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th class="text-warning">Product</th>
+                        <th>Full name</th>
+                        <th>town</th>
+                        <th>city</th>
+                        <th>zip code</th>
+                        <th>All adress</th>
+                        <th>Phone</th>
+                        <th>Email</th>
+                        <th>Comment</th>
+                        <th>Date</th>
+                        <th class="tewt-warning">ORDER DONE</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for order in orders %}
+                    <tr>
+                        <td>{{order.product}}</td>
+                        <td>{{order.full_name}}</td>
+                        <td>{{order.town}}</td>
+                        <td>{{order.city}}</td>
+                        <td>{{order.zip_code}}</td>
+                        <td>{{order.all_adress}}</td>
+                        <td>{{order.phone}}</td>
+                        <td>{{order.email}}</td>
+                        <td>{{order.comment}}</td>
+                        <td>{{order.date}}</td>
+                        <td><a href="{% url 'order_done' order.id %}" class="btn btn-lg btn-success"><i class="fas fa-check"></i></a></td>
+                    </tr>
+                    {% empty %}
+                        <h3 class="text-center p-2 border text-warning bg-dark">No orders today :)</h3>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

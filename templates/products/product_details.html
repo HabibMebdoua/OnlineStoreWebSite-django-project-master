@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="container">
+    <div class="bg-dark p-4 rounded">
+        <div class="row">
+            <div class="col-lg-6">
+                <img class="rounded border-warning w-100 p-2" src="{{product.img.url}}" alt="product's img">
+            </div>
+            <div class="col-lg-6 text-light">
+                <h3 class="text-center">{{product.name}}</h3>
+                <hr>
+                <label>Product description :</label>
+                <p>{{product.description}}</p>
+                <hr>
+                <label for="">Price :</label>
+                <h6 class="text-success">{{product.price}} $</h6>
+                <a class="btn btn-warning btn-lg mt-4" style="float: right;" href="{% url 'product_ordering' product.pk %}">Buy</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
